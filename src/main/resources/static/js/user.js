@@ -7,7 +7,16 @@ $("#btn-login").click(()=>{
     login();
 });
 
+
 //2. 기능 function 내부는 순차적!
+
+//유저네임 기억하기 메소드 httponly 속성이 걸려 있으면 안됨 주의하자. 
+function usernameRemember() {
+    let cookies = document.cookie.split("=");
+    //console.log(cookies[1]);
+    $("#username").val(cookies[1]);
+}
+usernameRemember();
 
 //회원가입 요청 메소드
 async function join(){
@@ -20,7 +29,7 @@ async function join(){
         }
 
    //(3)fetch로 요청 
-        let response = await fetch("/api/join",{
+        let response = await fetch("/join",{
             method: "POST",
             body: JSON.stringify(joinDto), //(2)자바스크립트 오브젝트를 json으로 변환
             headers: {
@@ -41,13 +50,19 @@ async function join(){
 
 //로그인 요청 메소드
 async function login(){
+
+    //checkbox의 체크 여부를 제이쿼리에서 확인하는 법!! 
+    let checked= $("#remember").is(':checked'); //true, false
+    
 //(1)username, password찾아서 자바스크립트 오브젝트로 만들기
   let loginDto = {
+
             username: $("#username").val(),
             password: $("#password").val(),
+            remember: checked ? "on" : "off" // true이면 on, false이면 off
                }
 
-        let response = await fetch("/api/login",{
+        let response = await fetch("/login",{
             method: "POST",
             body: JSON.stringify(loginDto), //(2)자바스크립트 오브젝트를 json으로 변환
             headers: {

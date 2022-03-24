@@ -11,6 +11,7 @@ import javax.persistence.Id;
 
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import lombok.AllArgsConstructor;
@@ -45,5 +46,8 @@ public class User {
 
     @LastModifiedDate
     private LocalDateTime updateDate;
+
+    @Transient // db에 컬럼 만들지 마! 라는 어노테이션
+    private String remember; // table에 필요 없음
 
 }
