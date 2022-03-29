@@ -15,6 +15,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import org.hibernate.annotations.ColumnDefault;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -49,7 +51,7 @@ public class Post {
     @Column(nullable = false)
     private String content;
 
-    @ColumnDefault("0") // 초기 조회수 0
+    // @ColumnDefault("0") // 초기 조회수 0
     @Column(nullable = false)
     private Integer pageCount;
 
@@ -57,6 +59,7 @@ public class Post {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
+    @JsonIgnoreProperties({ "post" }) // messageconverter에게 알려주는 어노테이션
     @OneToMany(mappedBy = "post") // ""안에 연관관계의 주인의 변수명을 넣으면 된다.
     private List<Comment> comments;
 
