@@ -24,5 +24,4 @@ public class WebMvcConfig implements WebMvcConfigurer {
      * .excludePathPatterns("/s/post/*");
      * }
      */
-
 }
