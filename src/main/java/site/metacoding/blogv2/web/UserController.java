@@ -20,9 +20,9 @@ public class UserController {
     // App은 이 친구를 요청할 필요가 없다.
     // web은 이 친구를 요청해야한다.
     @GetMapping("/s/user/{id}")
-    public String userInfo(@PathVariable Integer id, Model model) {
-        User userEntity = userService.회원정보(id);
-        model.addAttribute("user", userEntity);
+    public String userInfo(@PathVariable Integer id /* , Model model */) {
+        // User userEntity = userService.회원정보(id);
+        // model.addAttribute("user", userEntity);
         return "user/updateForm";
     }
 

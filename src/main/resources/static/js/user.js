@@ -13,15 +13,6 @@ $("#btn-update").click(()=>{
 
 
 //2. 기능 function 내부는 순차적!
-
-//유저네임 기억하기 메소드 httponly 속성이 걸려 있으면 안됨 주의하자. 
-function usernameRemember() {
-    let cookies = document.cookie.split("=");
-    //console.log(cookies[1]);
-    $("#username").val(cookies[1]);
-}
-usernameRemember();
-
 //회원가입 요청 함수
 async function join(){
 //(1)username, password, email, addr 찾아서 자바스크립트 오브젝트로 만들기
