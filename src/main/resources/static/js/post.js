@@ -7,7 +7,7 @@ $("#btn-write").click(() => {
     $("#btn-delete").click(() => {
         deletePost();
     });
-    
+
     async function deletePost() {
         let postId = $("#postId").val();
         let response = await fetch(`/s/api/post/${postId}`, {
@@ -22,27 +22,6 @@ $("#btn-write").click(() => {
             alert("삭제실패");
         }
     }
-async function loading() {
-        //console.log(location.href);
-        let postId = $("#postId").val();
-        let response = await fetch(`/api/post/${postId}`);
-        let responseParse = await response.json();  // text(), json()
-        console.log(responseParse);
-        userInfoRender(responseParse);
-    }
-    function userInfoRender(responseParse) {
-        let username = responseParse.data.post.user.username;
-        let title = responseParse.data.post.title;
-        let content = responseParse.data.post.content;
-        let auth = responseParse.data.auth; // 권한이 있는지 없는지 판단해서 true, false
-        if (auth == true) {
-            $("#auth-box").css("display", "block");
-        }
-        $("#username").text(username);
-        $("#title").text(title);
-        $("#content").html(content);
-    }
-    loading();
 
 //2. 기능
 async function write() {

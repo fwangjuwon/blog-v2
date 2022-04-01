@@ -64,7 +64,7 @@ public class PostApiController {
             }
         }
 
-        DetailResponseDto detailResponseDto = new DetailResponseDto(postEntity, auth);
+        DetailResponseDto detailResponseDto = new DetailResponseDto(postEntity, auth); // comment null
         return new ResponseDto<>(1, "성공", detailResponseDto);
     }
 
