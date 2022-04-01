@@ -42,4 +42,5 @@ public class Comment { // post1, comment n
 
     @CreatedDate
     private LocalDateTime createDate;
+
 }
