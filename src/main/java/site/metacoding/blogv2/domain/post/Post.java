@@ -3,6 +3,7 @@ package site.metacoding.blogv2.domain.post;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -61,7 +62,7 @@ public class Post {
     private User user;
 
     @JsonIgnoreProperties({ "post" }) // messageconverter에게 알려주는 어노테이션
-    @OneToMany(mappedBy = "post") // ""안에 연관관계의 주인의 변수명을 넣으면 된다.
+    @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE) // ""안에 연관관계의 주인의 변수명을 넣으면 된다.
     private List<Comment> comments;
 
     @CreatedDate
