@@ -27,7 +27,6 @@ public class PostService {
     public Page<Post> 글목록(Integer page) {
         PageRequest pq = PageRequest.of(page, 3, Sort.by(Sort.Direction.DESC, "id"));
         return postRepository.findAll(pq);
-
     }
 
     public Post 글상세보기(Integer id) {

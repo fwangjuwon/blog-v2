@@ -55,6 +55,7 @@ public class Post {
     @Column(nullable = false)
     private Integer pageCount;
 
+    @JsonIgnoreProperties({ "password" }) // json만들어줘서 넘겨줄 때,패스워드만 제외한다.
     @JoinColumn(name = "userId")
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
