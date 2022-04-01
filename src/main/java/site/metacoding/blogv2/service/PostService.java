@@ -37,4 +37,9 @@ public class PostService {
             throw new RuntimeException();
         }
     }
+
+    @Transactional
+    public void 글삭제하기(Integer id) {
+        postRepository.deleteById(id);
+    }
 }
