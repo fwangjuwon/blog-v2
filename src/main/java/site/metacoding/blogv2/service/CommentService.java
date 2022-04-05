@@ -22,17 +22,17 @@ public class CommentService {
     @Transactional
     public void 댓글쓰기(Comment comment, Integer postId) {
 
-        Post post = new Post();
-        post.setId(postId);
-        comment.setPost(post);
+        // Post post = new Post();
+        // post.setId(postId);
+        // comment.setPost(post);
 
-        // Optional<Post> postOp = postRepository.findById(postId);
-        // if (postOp.isPresent()) {
-        // Post postEntity = postOp.get();
-        // comment.setPost(postEntity);
-        // } else {
-        // throw new RuntimeException("없는 게시글에 댓글을 작성할 수 없습니다.");
-        // }
+        Optional<Post> postOp = postRepository.findById(postId);
+        if (postOp.isPresent()) {
+            Post postEntity = postOp.get();
+            comment.setPost(postEntity);
+        } else {
+            throw new RuntimeException("없는 게시글에 댓글을 작성할 수 없습니다.");
+        }
         commentRepository.save(comment);
     }
 

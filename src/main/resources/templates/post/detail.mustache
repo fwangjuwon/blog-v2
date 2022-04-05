@@ -1,6 +1,36 @@
   
 {{> /layout/header}}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        .feeling_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+} 
+.button-container {
+  margin-left: 20px;
+}
+.feeling_a {
+  background-color: #fff;
+  border: 2px solid #fff;
+  padding: 10px 20px;
+  border-radius: 2px;
+  color: #2199e8;
+}     
+.active {
+  background-color: #2199e8;
+  color: #fff;
+}
+    </style>
+</head>
 <!-- 컨테이너 시작 -->
 <div class="container mt-3">
     <input type="hidden" id="postId"  value="{{postId}}">
@@ -14,6 +44,18 @@
     <hr />
     <div id="content" class="mb-3">
     </div>
+    <div class="feeling_div">
+        <div class="button-container like-container">
+            <button class="feeling_a">
+                <i class="material-icons">thumb_up</i>           
+          </div>
+          <div class="button-container dislike-container">
+            <button class="feeling_a">
+                <i class="material-icons">thumb_down</i>
+        </div>
+    </div>
+    <br>
+    <br>
    <div id="auth-box"  style="display: none;">
     <a href="/s/post/1/updateForm" class="btn btn-success">수정</a>
     <button id="btn-delete"btn class="btn btn-success">삭제</button>
@@ -72,6 +114,16 @@
         }
     }
 </script>
+
+<script>
+    
+    $('.like-container > .feeling_a, .dislike-container  > .feeling_a').on('click', function() {
+    event.preventDefault();
+    $('.active').removeClass('active');
+    $(this).addClass('active');
+});
+</script>
+
 
 <script src="/js/post.js"></script>
 
